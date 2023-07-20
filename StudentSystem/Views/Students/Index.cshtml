@@ -1,0 +1,44 @@
+﻿@model IEnumerable<StudentSystem.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<header class="d-flex align-content-between justify-content-between">
+    <h1>Student System Management</h1>
+    <button class="btn btn-primary">
+        <a style="text-decoration:none" class="text-white" asp-action="Create">Add New Student</a>
+    </button>
+
+</header>
+
+<table class="table table-secondary table-striped mt-3">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
